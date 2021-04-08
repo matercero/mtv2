@@ -7,19 +7,19 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Gestión MTV | Aplicación para gestión de alquiles MTV.</title>
+    <title>Creacion de Cliente</h1>
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link  th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-    <link  th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <link href="bootstrap/css/jumbotron.css" rel="stylesheet">
+    <link href="bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
   </head>
 
   <body>
 
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Gestión MTV</a>
+        <a class="navbar-brand" href="#">EmpleosApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,10 +30,10 @@
               <a class="nav-link active" href="#">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cliente/index">Clientes</a>
+              <a class="nav-link" href="#">Menu 1</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/mobiliario/index">Mobiliario</a>
+              <a class="nav-link" href="#">Menu 2</a>
             </li>          
           </ul>  
           <a class="btn btn-primary" href="#">Ingresar</a>&nbsp;
@@ -42,13 +42,40 @@
       </nav>
     </header>
 
-    <main role="main">
+    <main role="main">     
+      <hr>
       <div class="container"> 
-	      <h2 class="font-weight-bold text-center text-capitalize">Bienvenido MTV</h2>      
+
+        <div class="card">
+          <h4 class="card-header"><strong>Datos del cliente</strong></h4>              
+          <div class="card-body">
+            <form th:action="@{/cliente/save}" method="post">              
+              <div class="row">
+                <div class="col-md-6"> 
+                  <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre del cliente" required="required">
+                  </div>
+                </div>                
+              </div> 
+             <!--  <div class="row">
+                <div class="col-md-6"> 
+                  <div class="form-group">
+                    <label for="descripcion">Apellido</label>
+                    <textarea class="form-control" name="apellido" id="apellido" rows="2"></textarea>
+                  </div> 
+                </div>                
+              </div>  -->
+              <hr>
+              <button type="submit" title="Guardar" class="btn btn-primary">Guardar</button>  
+            </form>
+          </div>
+        </div>
       </div> <!-- /container -->
+
     </main>
 
-    <footer class="footer">
+      <footer class="footer">
       <div class="container">
         <p>
           &copy; 2021 Eme3 Gestión MTV, Inc. | WebApp Desarrollada con Spring Boot 2.1.2 | Autor: Miguel A. III | &middot; <a href="#">Privacy</a>
@@ -61,6 +88,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>     
   </body>
 </html>
