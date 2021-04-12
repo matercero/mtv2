@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>title here</title>
-</head>
+<head th:replace="fragments :: head" />
 <body>
-	<h1>Ver Clientes</h1>
+ <div th:replace="fragments :: menu" ></div>
+	<main role="main">
+      <hr>
+      <div class="container"> 
+
+        <div class="row">
+          <div class="col-md-3">            
+            <img class="rounded mx-auto d-block" src="images/logo3.png" alt="Generic placeholder image" width="220" height="220">            
+          </div>
+          <div class="col-md-9">
+            <div class="card">
+              <h4 class="card-header">Cliente: <strong  th:text="${cliente.nombre} +'&nbsp;' + ${cliente.apellidos}"></strong></h4>              
+              <div class="card-body">
+                <h5 class="card-title"><strong>Dirección: </strong> <span th:text="${cliente.direccion}"></span></h5>
+                <h6 class="card-title"><strong>Municipio: </strong> <span th:text="${cliente.municipio}"></span></h6>                
+                <h6 class="card-title"><strong>Provincia: </strong><span th:text="${cliente.provincia}"></span></h6>
+                <h6 class="card-title"><strong>CP: </strong><span th:text="${cliente.codigoPostal}"></span></h6>
+                  <h6 class="card-title"><strong>Telefono: </strong><span th:text="${cliente.telefono}"></span></h6>
+                <h6 class="card-title"><strong>Email: </strong><span th:text="${cliente.email}"></span></h6>
+                  <h6 class="card-title"><strong>Observaciones: </strong><span th:text="${cliente.Observaciones}"></span></h6>
+                  
+                <a class="btn btn-primary" href="#" role="button" title="Quiero aplicar para esta oferta de trabajo.">
+                <i class="fas fa-file" aria-hidden="true"></i> Aplicar</a>                            
+              </div>
+            </div>  
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+	
+	<div th:replace="fragments :: footer" ></div>
 </body>
 </html>

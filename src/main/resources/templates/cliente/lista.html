@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>title here</title>
-</head>
+<head th:replace="fragments :: head" />
 <body>
+	<div th:replace="fragments :: menu" ></div>
 	<h1>Lista Clientes</h1>
+	<a th:href="@{/cliente/crear}"  tooltip="crear nuevo cliente"><i class="bi bi-plus-circle"></i>&nbsp;Nuevo</a>
+	
+	<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">nombre</th>
+		      <th scope="col">apellidos</th>
+		      <th scope="col">direccion</th>
+		      <th scope="col">Acciones</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="cli : ${listaCliente}">
+		      <th scope="row" th:text="${cli.id}"></th>
+		      <td th:text="${cli.nombre}"></td>
+		      <td th:text="${cli.apellidos}"></td>
+		      <td th:text="${cli.direccion}"></td>
+		      <td colspan="2">
+		      	<a th:href="@{/cliente/ver/{id}   (id=${cli.id}) }" >		      	
+		    		<i class="bi bi-pencil"></i>
+		      	</a>	
+		      	&nbsp;&nbsp;	     
+		      	<a th:href="@{/cliente/eliminar/{id}   (id=${cli.id}) }" class="btn btn-danger">
+		      		<i class="bi bi-trash"></i></a>      
+		      </td>
+		      
+		    </tr>
+ </tbody>
+</table>
+
+	<div th:replace="fragments :: footer" ></div>
 </body>
 </html>
