@@ -10,5 +10,7 @@ import es.eme3.model.Cliente;
 public interface IClienteService {
 	
 	List<Cliente> buscarTodas();
+	
+	Cliente buscarPorId(int id);
 
 }
