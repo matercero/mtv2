@@ -1,0 +1,82 @@
+ DROP TABLE IF EXISTS TEST;
+
+CREATE TABLE TEST
+	(ID INT PRIMARY KEY,
+     NAME VARCHAR(255));
+	 
+INSERT INTO TEST VALUES(1, 'Hello');
+INSERT INTO TEST VALUES(2, 'World');
+SELECT * FROM TEST ORDER BY ID;
+UPDATE TEST SET NAME='Hi' WHERE ID=1;
+DELETE FROM TEST WHERE ID=2;
+
+DROP TABLE IF EXISTS mobiliario ;
+CREATE TABLE mobiliario (
+  id bigint auto_increment,
+  alias VARCHAR(150) NULL DEFAULT NULL,
+  direccion VARCHAR(200) NULL DEFAULT NULL,
+  municipio VARCHAR(100) NULL DEFAULT NULL,
+  codigoPostal INT(5) NULL DEFAULT NULL,
+  provincia VARCHAR(100) NULL DEFAULT NULL,
+  contadorLuz INT(11) NULL DEFAULT NULL COMMENT 'Número de contador de luz',
+  contadorAgua INT(11) NULL DEFAULT NULL COMMENT 'Número de contador de agua')
+  
+  
+  INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('PN calle', 'Pozo nuevo 50 2-1', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('PN interior', 'Pozo nuevo 50 2-2', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('SM 1', 'San Miguel 5-1', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('SM 2', 'San Miguel 5-2', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('SM Local', 'Calle San Miguel 5 local', 'Moron de la Frontera', 41530, 'sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('PN Local', 'Calle Pozo Nuevo 50', 'Moron de la Frontera', 41530, 'sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('ED', 'Calle Eduardo Dato', 'Moron de la Fra.', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ('Sevilla', 'Calle Munoz Pavon', 'Sevilla', 41000, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigoPostal, provincia, contadorLuz, contadorAgua) VALUES ( 'ED parking', 'Calle Eduardo Dato', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
+
+
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS cliente ;
+CREATE TABLE  cliente (
+  id bigint auto_increment,
+  dni VARCHAR(10) NULL COMMENT 'numero+letra sin espacios',
+  nombre VARCHAR(100) NULL DEFAULT NULL,
+  apellidos VARCHAR(255) NULL DEFAULT NULL,
+  direccion VARCHAR(500) NULL DEFAULT NULL,
+  municipio VARCHAR(100) NULL DEFAULT NULL,
+  provincia VARCHAR(100) NULL DEFAULT NULL,
+  codigoPostal INT(5) NULL DEFAULT NULL,
+  email VARCHAR(100) NULL DEFAULT NULL,
+  telefono INT(11) NULL DEFAULT NULL,
+  observaciones VARCHAR(4000) NULL DEFAULT NULL);
+
+
+INSERT INTO cliente ( dni, nombre, apellidos, direccion, municipio, provincia, codigoPostal, email, telefono, observaciones) VALUES (DEFAULT, '11111111h', 'Pepe', 'Garcia Lopez', 'calle sierpes,1', 'sevilla', 'sevilla', 41000, 'a@a.com', 954010203, NULL);
+
+INSERT INTO cliente (dni, nombre, apellidos, direccion, municipio, provincia, codigoPostal, email, telefono, observaciones) VALUES ('11111111h', 'Luis', 'Sanchez Valle', 'calle tetuan,10', 'sevilla', 'sevilla', 41000, 'b@b.com', 95400001, NULL);
+
+
+
+
+-------------------------------
+
+
+DROP TABLE IF EXISTS alquiler ;
+
+CREATE TABLE alquiler (
+  id_cliente INT(11) NOT NULL,
+  id_mobiliario INT(11) NOT NULL,
+  fechaInicio DATE NULL,
+  fechaFin DATE NULL DEFAULT NULL,
+  luzInicio INT(11) NULL DEFAULT NULL,
+  luzFin INT(11) NULL DEFAULT NULL,
+  aguaInicio INT(11) NULL DEFAULT NULL,
+  aguaFin INT(11) NULL DEFAULT NULL,
+  precio INT(11) NULL DEFAULT NULL,
+  observaciones VARCHAR(4000) NULL,
+  Contrato BLOB NULL,
+	FOREIGN KEY (id_cliente) REFERENCES cliente(id), 
+    FOREIGN KEY (id_mobiliario) REFERENCES mobiliario(id))
+	
+	
+INSERT INTO alquiler (id_cliente, id_mobiliario, fechaInicio, fechaFin, luzInicio, luzFin, aguaInicio, aguaFin, precio, observaciones, Contrato ) VALUES (1,             1,           null,               null,         null,      null,         null ,         null,       null,        null,            null );
+	
+	
