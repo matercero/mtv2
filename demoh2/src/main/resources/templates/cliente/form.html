@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head" />
+  <body>
+   <div th:replace="fragments :: menu" ></div>
+
+    <main role="main">     
+      <hr>
+      <div class="container"> 
+
+        <div class="card">
+          <h4 class="card-header"><strong>Datos del cliente</strong></h4>              
+          <div class="card-body">
+            <form th:action="@{/cliente/save}" method="post">              
+              <div class="row">
+                <div class="col-md-6"> 
+                  <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" 
+                    placeholder="Escriba el nombre del cliente" required="required">
+                  </div>
+                </div>                
+              </div> 
+             <!--  <div class="row">
+                <div class="col-md-6"> 
+                  <div class="form-group">
+                    <label for="descripcion">Apellido</label>
+                    <textarea class="form-control" name="apellido" id="apellido" rows="2"></textarea>
+                  </div> 
+                </div>                
+              </div>  -->
+              <hr>
+              <button type="submit" title="Guardar" class="btn btn-primary">Guardar</button>  
+            </form>
+          </div>
+        </div>
+      </div> <!-- /container -->
+
+    </main>
+
+   <div th:replace="fragments :: footer" ></div>
+   
+  </body>
+</html>
