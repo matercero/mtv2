@@ -49,9 +49,9 @@ CREATE TABLE  cliente (
   observaciones VARCHAR(4000) NULL DEFAULT NULL);
 
 
-INSERT INTO cliente ( dni, nombre, apellidos, direccion, municipio, provincia, codigoPostal, email, telefono, observaciones) VALUES (DEFAULT, '11111111h', 'Pepe', 'Garcia Lopez', 'calle sierpes,1', 'sevilla', 'sevilla', 41000, 'a@a.com', 954010203, NULL);
+INSERT INTO cliente ( dni, nombre, apellidos, direccion, municipio, provincia, codigo_Postal, email, telefono, observaciones) VALUES ('11111111H', 'Pepe', 'Garcia Lopez', 'calle sierpes,1', 'Morón Fra.', 'sevilla', 41000, 'a@a.com', 954010203, NULL);
 
-INSERT INTO cliente (dni, nombre, apellidos, direccion, municipio, provincia, codigoPostal, email, telefono, observaciones) VALUES ('11111111h', 'Luis', 'Sanchez Valle', 'calle tetuan,10', 'sevilla', 'sevilla', 41000, 'b@b.com', 95400001, NULL);
+INSERT INTO cliente (dni, nombre, apellidos, direccion, municipio, provincia, codigo_Postal, email, telefono, observaciones) VALUES ('22222222A', 'Luis', 'Sanchez Valle', 'calle tetuan,10', 'sevilla', 'sevilla', 41000, 'b@b.com', 95400001, NULL);
 
 
 

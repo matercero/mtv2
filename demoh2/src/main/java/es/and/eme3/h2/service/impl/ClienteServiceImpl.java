@@ -12,26 +12,30 @@ import es.and.eme3.h2.service.IClienteService;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
-	
-	private List<Cliente> lista = null; 
 
+    @Autowired
+    ClienteRepository clienteRepository;
 
-	@Autowired
-	ClienteRepository clienteRepository;
-	
-	@Override
-	public List<Cliente> getAll() {
-		List<Cliente> lista = clienteRepository.findAll();
-		return lista;
+    @Override
+    public List<Cliente> getAll() {
+	List<Cliente> lista = clienteRepository.findAll();
+	return lista;
+    }
+
+    @Override
+    public Cliente getById(int id) {
+	Optional<Cliente> c = clienteRepository.findById(id);
+	if (c.isPresent()) {
+	    return c.get();
 	}
 
-	@Override
-	public Cliente getById(int id) {
-		Optional<Cliente> c = clienteRepository.findById(id);
-		if (c.isPresent())
-			return c.get();
-		
-		return null;
-	}
+	return null;
+    }
+
+    @Override
+    public Cliente saveAndFlush(Cliente cliente) {
+	Cliente resultado = clienteRepository.saveAndFlush(cliente);
+	return resultado;
+    }
 
 }

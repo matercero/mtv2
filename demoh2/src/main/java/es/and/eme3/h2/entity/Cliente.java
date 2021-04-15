@@ -29,13 +29,6 @@ public class Cliente {
 	private int telefono;
 	private String observaciones;
 
-	/*
-	 * @ManyToMany
-	 * 
-	 * @JoinTable(name = "alquiler", joinColumns = @JoinColumn(name = "id_cliente"),
-	 * inverseJoinColumns = @JoinColumn(name = "id_mobiliario")) private
-	 * Set<Mobiliario> mobiliarios;
-	 */
 	@OneToMany(mappedBy = "cliente")
 	private Set<Alquiler> alquilerCliente = new HashSet<Alquiler>();
 

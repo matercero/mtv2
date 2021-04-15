@@ -1,44 +1,85 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head" />
-  <body>
-   <div th:replace="fragments :: menu" ></div>
+<body>
+	<div th:replace="fragments :: menu"></div>
 
-    <main role="main">     
-      <hr>
-      <div class="container"> 
+	<main role="main">
+	<hr>
+	<div class="container">
 
-        <div class="card">
-          <h4 class="card-header"><strong>Datos del cliente</strong></h4>              
-          <div class="card-body">
-            <form th:action="@{/cliente/save}" method="post">              
-              <div class="row">
-                <div class="col-md-6"> 
-                  <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" 
-                    placeholder="Escriba el nombre del cliente" required="required">
-                  </div>
-                </div>                
-              </div> 
-             <!--  <div class="row">
-                <div class="col-md-6"> 
-                  <div class="form-group">
-                    <label for="descripcion">Apellido</label>
-                    <textarea class="form-control" name="apellido" id="apellido" rows="2"></textarea>
-                  </div> 
-                </div>                
-              </div>  -->
-              <hr>
-              <button type="submit" title="Guardar" class="btn btn-primary">Guardar</button>  
-            </form>
-          </div>
-        </div>
-      </div> <!-- /container -->
+		<div class="card">
+			<h4 class="card-header">
+				<strong>Datos del cliente</strong>
+			</h4>
+			<div class="card-body">
+				<form th:action="@{guardar}" th:object="${cliente}"
+					method="post">
 
-    </main>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{dni}"
+								placeholder="DNI" title="DNI" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{nombre}"
+								placeholder="Nombre" title="Nombre">
+						</div>
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{apellidos}"
+								placeholder="Apellidos" title="Apellidos">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<input type="text" class="form-control" th:field="*{direccion}"
+								placeholder="Direcci&oacute;n" title="Direcci&oacute;n">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{municipio}"
+								placeholder="Municipio" title="Municipio">
+						</div>
 
-   <div th:replace="fragments :: footer" ></div>
-   
-  </body>
+						<div class="form-group col-md-4">
+							<input type="text" class="form-control" th:field="*{provincia}"
+								placeholder="Provincia" title="Provincia">
+						</div>
+						<div class="form-group col-md-2">
+							<input type="text" class="form-control"
+								th:field="*{codigoPostal}" placeholder="CP" title="*{codigoPostal}">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="email" class="form-control" th:field="*{email}"
+								placeholder="Email" title="Email">
+						</div>
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{telefono}"
+								placeholder="Tel&eacute;fono" title="Tel&eacute;fono">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<textarea class="form-control" th:field="*{observaciones}"
+							rows="3" placeholder="Observaciones" title="Observaciones"></textarea>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Guardar"
+							class="btn btn-outline-primary" title="Guardar"> <a
+							th:href="@{index}" class="btn btn-outline-danger" title="Cancelar">Cancelar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /container --> </main>
+
+	<div th:replace="fragments :: footer"></div>
+
+</body>
 </html>

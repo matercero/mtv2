@@ -8,9 +8,11 @@ import es.and.eme3.h2.entity.Cliente;
 
 @Service
 public interface IClienteService {
-	
-	List<Cliente> getAll();
-	
-	Cliente getById(int id);
+
+    List<Cliente> getAll();
+
+    Cliente getById(int id);
+
+    Cliente saveAndFlush(Cliente cliente);
 
 }
