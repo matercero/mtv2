@@ -2,7 +2,74 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head" />
 <body>
-	<div th:replace="fragments :: menu" ></div>
-	<h1>Formulario Mobiliario</h1>
+	<div th:replace="fragments :: menu"></div>
+
+	<main role="main">
+	
+	<div class="container">
+
+		<div class="card">
+			<h4 class="card-header" th:text="'Datos del mobiliario ' + ${mobiliario.id}">
+				<strong></strong>
+			</h4>
+			<div class="card-body">
+				<form th:action="@{/mobiliario/guardar}" th:object="${mobiliario}"
+					method="post">
+
+					<div class="form-row">					
+						<input type="hidden" th:field="*{id}"/>								
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{alias}"
+								placeholder="Alias" title="Alias" />
+						</div>
+					</div>
+					
+				
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<input type="text" class="form-control" th:field="*{direccion}"
+								placeholder="Direcci&oacute;n" title="Direcci&oacute;n">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{municipio}"
+								placeholder="Municipio" title="Municipio">
+						</div>
+
+						<div class="form-group col-md-4">
+							<input type="text" class="form-control" th:field="*{provincia}"
+								placeholder="Provincia" title="Provincia">
+						</div>
+						<div class="form-group col-md-2">
+							<input type="text" class="form-control"
+								th:field="*{codigoPostal}" placeholder="CP" title="*{codigoPostal}">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{contadorLuz}"
+								placeholder="Contador Luz" title="Contador Luz">
+						</div>
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" th:field="*{contadorAgua}"
+								placeholder="Contador de Agua" title="Contador de Agua">
+						</div>
+					</div>
+
+					<div class="card-footer bg-ligth">
+						<input type="submit" value="Guardar"
+							class="btn btn-outline-primary" title="Guardar"> <a
+							th:href="@{../index}" class="btn btn-outline-danger" title="Cancelar">Cancelar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /container --> 
+	</main>
+
+	<div th:replace="fragments :: footer"></div>
+
 </body>
 </html>

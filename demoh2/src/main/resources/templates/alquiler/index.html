@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head" />
+<body>
+	<div th:replace="fragments :: menu"></div>
+
+
+	<div class="container">
+	
+	<h1>Alquiler</h1>
+	
+	<select class="form-select" aria-label="Default select example">
+  		<option value="0" selected>Seleccione Cliente</option>
+		  
+		  <option th:each="cli : ${listaCliente}" value="${cli.dni} + "  th:text="${cli.nombre} + ${cli.apellidos}" ></option>
+		  
+		</select>
+	
+	</div><!--  -->
+	<div th:replace="fragments :: footer"></div>
+</body>
+</html>

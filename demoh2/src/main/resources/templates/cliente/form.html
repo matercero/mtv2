@@ -5,18 +5,20 @@
 	<div th:replace="fragments :: menu"></div>
 
 	<main role="main">
-	<hr>
+	
 	<div class="container">
 
 		<div class="card">
-			<h4 class="card-header">
-				<strong>Datos del cliente</strong>
+			<h4 class="card-header" th:text="'Datos del cliente: ' + ${cliente.id}">
+				<strong></strong>
 			</h4>
 			<div class="card-body">
-				<form th:action="@{guardar}" th:object="${cliente}"
+				<form th:action="@{/cliente/guardar}" th:object="${cliente}"
 					method="post">
 
 					<div class="form-row">
+					
+						<input type="hidden" th:field="*{id}"/>								
 						<div class="form-group col-md-6">
 							<input type="text" class="form-control" th:field="*{dni}"
 								placeholder="DNI" title="DNI" />
@@ -68,16 +70,17 @@
 						<textarea class="form-control" th:field="*{observaciones}"
 							rows="3" placeholder="Observaciones" title="Observaciones"></textarea>
 					</div>
-					<div class="form-group">
+					<div class="card-footer bg-ligth">
 						<input type="submit" value="Guardar"
 							class="btn btn-outline-primary" title="Guardar"> <a
-							th:href="@{index}" class="btn btn-outline-danger" title="Cancelar">Cancelar</a>
+							th:href="@{../}" class="btn btn-outline-danger" title="Cancelar">Cancelar</a>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<!-- /container --> </main>
+	<!-- /container --> 
+	</main>
 
 	<div th:replace="fragments :: footer"></div>
 

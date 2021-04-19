@@ -1,5 +1,6 @@
 package es.and.eme3.h2.entity;
 
+import java.sql.Clob;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "alquiler")
 public class Alquiler {
@@ -30,18 +34,16 @@ public class Alquiler {
 	@Column(name = "fechaInicio")
 	private Date fechaInicio;
 
-	/*
-	 * private Date fechaFin; private int luzInicio; private int luzFin; private int
-	 * aguaInicio; private int aguaFin; private int precio; private String
-	 * observaciones; private Clob contrato;
-	 */
 
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
+	  private Date fechaFin; 
+	  private int luzInicio; 
+	  private int luzFin; 
+	  private int aguaInicio; 
+	  private int aguaFin; 
+	  private int precio; 
+	  private String observaciones; 
+	  private Clob contrato;
+	 
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
+	
 }

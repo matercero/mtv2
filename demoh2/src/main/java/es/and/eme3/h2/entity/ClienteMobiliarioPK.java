@@ -1,6 +1,7 @@
 package es.and.eme3.h2.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -15,5 +16,6 @@ public class ClienteMobiliarioPK implements Serializable {
 
 	@Column(name = "id_mobiliario")
 	private int idMobiliario;
+	
 
 }

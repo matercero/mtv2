@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import es.and.eme3.h2.entity.Cliente;
@@ -37,5 +39,15 @@ public class ClienteServiceImpl implements IClienteService {
 	Cliente resultado = clienteRepository.saveAndFlush(cliente);
 	return resultado;
     }
+    
+    public void deleteById(int idCliente) {
+    	clienteRepository.deleteById(idCliente);
+    }
+
+	@Override
+	public Page<Cliente>  getAllPage(PageRequest page) {
+		
+		return  clienteRepository.findAll(page);
+	}
 
 }
