@@ -9,15 +9,12 @@
 	<div class="container">
 
 		<div class="card">
-			<h4 class="card-header" th:text="'Datos del cliente: ' + ${cliente.id}">
-				<strong></strong>
-			</h4>
+			<h4 class="card-header" th:text="'Datos del cliente: ' + ${cliente.id}"></h4>
 			<div class="card-body">
 				<form th:action="@{/cliente/guardar}" th:object="${cliente}"
 					method="post">
 
-					<div class="form-row">
-					
+					<div class="form-row">					
 						<input type="hidden" th:field="*{id}"/>								
 						<div class="form-group col-md-6">
 							<input type="text" class="form-control" th:field="*{dni}"
@@ -55,6 +52,7 @@
 								th:field="*{codigoPostal}" placeholder="CP" title="*{codigoPostal}">
 						</div>
 					</div>
+					
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<input type="email" class="form-control" th:field="*{email}"

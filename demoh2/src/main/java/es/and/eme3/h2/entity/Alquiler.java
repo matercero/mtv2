@@ -1,49 +1,93 @@
 package es.and.eme3.h2.entity;
 
-import java.sql.Clob;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import lombok.Data;
+
 
 @Data
 @Entity
 @Table(name = "alquiler")
 public class Alquiler {
 
-	@EmbeddedId
-	private ClienteMobiliarioPK id;
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private int        id;
 
-	@ManyToOne
-	@MapsId("idCliente") // This is the name of attr in ClienteMobiliarioPK class
-	@JoinColumn(name = "id_cliente")
-	private Cliente cliente;
+   @ManyToOne
+   @JoinColumn(name = "id_cliente")
+   private Cliente    cliente;
 
-	@ManyToOne
-	@MapsId("idMobiliario")
-	@JoinColumn(name = "id_mobiliario")
-	private Mobiliario mobiliario;
+   @ManyToOne
+   @JoinColumn(name = "id_mobiliario")
+   private Mobiliario mobiliario;
 
-	@Column(name = "fechaInicio")
-	private Date fechaInicio;
+   @Column(name = "fechaInicio")
+   private String     fechaInicio;
 
+   @Column(name = "fechaFin")
+   private String     fechaFin;
 
-	  private Date fechaFin; 
-	  private int luzInicio; 
-	  private int luzFin; 
-	  private int aguaInicio; 
-	  private int aguaFin; 
-	  private int precio; 
-	  private String observaciones; 
-	  private Clob contrato;
-	 
+   @Column(name = "luzInicio")
+   private int        luzInicio;
 
-	
+   @Column(name = "luzFin")
+   private int        luzFin;
+
+   @Column(name = "aguaInicio")
+   private int        aguaInicio;
+
+   @Column(name = "aguaFin")
+   private int        aguaFin;
+
+   @Column(name = "precio")
+   private int        precio;
+
+   @Column(name = "observaciones")
+   private String     observaciones;
+
+   @Lob
+   @Column(name = "contrato")
+   private byte[]     contrato;
+
+   private String     docName;
+   private String     docType;
+
+   public Alquiler() {
+      super();
+      cliente = new Cliente();
+      mobiliario = new Mobiliario();
+      fechaInicio = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+      fechaFin = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+   }
+
+   public Alquiler(Integer id, Cliente cliente, Mobiliario mobiliario, String fechaInicio, String fechaFin, int luzInicio, int luzFin, int aguaInicio, int aguaFin, int precio, String observaciones, byte[] contrato, boolean disponible, String docName, String docType) {
+      super();
+      this.id = id;
+      this.cliente = new Cliente();
+      this.mobiliario = new Mobiliario();
+      this.fechaInicio = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+      this.fechaFin = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+      this.luzInicio = luzInicio;
+      this.luzFin = luzFin;
+      this.aguaInicio = aguaInicio;
+      this.aguaFin = aguaFin;
+      this.precio = precio;
+      this.observaciones = observaciones;
+      this.contrato = contrato;
+      this.docName = docName;
+      this.docType = docType;
+   }
+
 }

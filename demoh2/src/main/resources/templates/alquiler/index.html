@@ -4,19 +4,62 @@
 <body>
 	<div th:replace="fragments :: menu"></div>
 
-
+	
 	<div class="container">
-	
-	<h1>Alquiler</h1>
-	
-	<select class="form-select" aria-label="Default select example">
-  		<option value="0" selected>Seleccione Cliente</option>
-		  
-		  <option th:each="cli : ${listaCliente}" value="${cli.dni} + "  th:text="${cli.nombre} + ${cli.apellidos}" ></option>
-		  
-		</select>
-	
-	</div><!--  -->
+
+		<h1>Alquiler</h1>
+		
+		<div class="alert alert-info alert-dismissible fade show"
+			role="info" th:if="${message != null}">
+			
+			<h4 th:text="${message}"></h4>	
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<a th:href="@{/alquiler/crear}"><i class="bi bi-plus-circle btn-small"></i>&nbsp;Nuevo</a>
+
+		<table class="table table-hover  table-striped "  data-height="460">
+			<thead class="table-primary">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Cliente</th>
+					<th scope="col">Mobiliario</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Fecha Inicio-Fin</th>
+					<th scope="col">Contrato</th>
+					<th scope="col" width="20%" class="text-right">Acciones</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="a : ${listaAlquiler}">
+					<th scope="row" th:text="${a.id}" />
+					<td th:text="${a.cliente.nombre}" />
+					<td th:text="${a.mobiliario.alias}" />
+					<td th:text="${a.precio}" />
+					<td th:text="${a.fechaInicio} + ' - '+ ${a.fechaFin}" />
+					<th:block th:if="${a.contrato != null}? "/>
+						<td th:text="${a.docName}" ><a th:href="@{'/alquiler/downloadFile/'+${a.id}}" ></a></td>
+					</th:block>
+					
+					
+				 	<td colspan="2" class="text-right"><a
+						th:href="@{/alquiler/editar/{id}   (id=${a.id}) }"> 
+						<i	class="bi bi-pencil" title="Editar"></i>
+					</a> &nbsp;&nbsp; 
+					<a th:href="@{/alquiler/eliminar/{id}   (id=${a.id}) }"	class="btn btn-danger"
+						onclick="return confirm('¿ Estás seguro de eliminar ?')">
+						<i	class="bi bi-trash" title="Eliminar"></i></a>
+				   </td>
+				
+				 </tr>
+			</tbody>
+		</table>
+		
+	</div>
+
 	<div th:replace="fragments :: footer"></div>
 </body>
 </html>

@@ -22,13 +22,13 @@ CREATE TABLE mobiliario (
   contador_Agua INT(11) NULL DEFAULT NULL COMMENT 'Número de contador de agua')
   
   
-  INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('PN calle', 'Pozo nuevo 50 2-1', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
-INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('PN interior', 'Pozo nuevo 50 2-2', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('PN calle', 'Calle Pozo nuevo 50 2-1', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('PN interior', 'Calle Pozo nuevo 50 2-2', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
 INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('SM 1', 'San Miguel 5-1', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
 INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('SM 2', 'San Miguel 5-2', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
 INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('SM Local', 'Calle San Miguel 5 local', 'Moron de la Frontera', 41530, 'sevilla', 0, 0);
 INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('PN Local', 'Calle Pozo Nuevo 50', 'Moron de la Frontera', 41530, 'sevilla', 0, 0);
-INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('ED', 'Calle Eduardo Dato', 'Moron de la Fra.', 41530, 'Sevilla', 0, 0);
+INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('ED', 'Calle Eduardo Dato', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
 INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ('Sevilla', 'Calle Munoz Pavon', 'Sevilla', 41000, 'Sevilla', 0, 0);
 INSERT INTO mobiliario ( alias, direccion, municipio, codigo_Postal, provincia, contador_Luz, contador_Agua) VALUES ( 'ED parking', 'Calle Eduardo Dato', 'Moron de la Frontera', 41530, 'Sevilla', 0, 0);
 

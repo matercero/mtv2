@@ -8,16 +8,19 @@ import org.springframework.stereotype.Service;
 
 import es.and.eme3.h2.entity.Cliente;
 
+
 @Service
 public interface IClienteService {
 
-    List<Cliente> getAll();
+   void deleteById(int idCliente);
 
-    Cliente getById(int id);
+   List<Cliente> getAll();
 
-    Cliente saveAndFlush(Cliente cliente);
-    
-    void deleteById(int idCliente);
+   List<Cliente> getAllDesc();
 
-    Page<Cliente>  getAllPage(PageRequest page);
+   Page<Cliente> getAllPage(PageRequest page);
+
+   Cliente getById(int id);
+
+   Cliente saveAndFlush(Cliente cliente);
 }

@@ -25,14 +25,15 @@
 			<thead class="table-primary">
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">alias</th>
+					<th scope="col">Alias</th>
 					<th scope="col">Dirección</th>
 					<th scope="col">Municipio</th>
 					<th scope="col">Provincia</th>
-					<th scope="col">Código Postal</th>					
-					<th scope="col">Contador Luz</th>
-					<th scope="col">Contador Agua</th>
-					<th scope="col" width="20%" class="text-center">Acciones</th>
+					<th scope="col">CP</th>					
+					<th scope="col">Cont. Luz</th>
+					<th scope="col">Cont. Agua</th>
+					<th scope="col">Libre</th>
+					<th scope="col" width="20%" class="text-right">Acciones</th>
 
 				</tr>
 			</thead>
@@ -43,11 +44,12 @@
 					<td th:text="${mo.direccion}" />
 					<td th:text="${mo.municipio}" />
 					<td th:text="${mo.provincia}" />					
-					<td th:text="${mo.codigoPostal}" />
-					<td th:text="${mo.contadorLuz}" />
-					<td th:text="${mo.contadorAgua}" />
+					<td th:text="${mo.codigoPostal}" class="text-right"/>
+					<td th:text="${mo.contadorLuz}" class="text-right"/>
+					<td th:text="${mo.contadorAgua}" class="text-right"/>
 					
-					<td colspan="2" class="text-center"><a
+					
+					<td colspan="2" class="text-right"><a
 						th:href="@{/mobiliario/editar/{id}   (id=${mo.id}) }"> <i
 							class="bi bi-pencil" title="Editar"></i>
 					</a> &nbsp;&nbsp; <a
