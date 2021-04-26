@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head" />
+<body>
+	<div th:replace="fragments :: menu"></div>
+
+	<main role="main">	
+	<div class="container">
+		<div class="card">
+			
+			<div class="card-body">
+			
+		<form th:action="@{/alquiler/guardar}" th:object="${alquiler}"
+					method="post" encType="multipart/form-data">
+					
+					<input type="hidden" th:field="*{id}"/>							
+					
+					 <div class="form-group">
+						    <label for="select_cli">Seleccione cliente</label>
+								<select  class="form-control form-group" id="select_cli" th:field="*{cliente.id}" >
+								  <option th:each="cli : ${listaCliente}"  th:value="${cli.id}"  th:text="'('+${cli.id} + ') ' + ${cli.dni} + ' - ' + ${cli.nombre} + ' ' + ${cli.apellidos}" ></option>
+								</select>						
+					
+						
+						
+						
+						<div class="input-group">
+								  <div class="input-group-prepend">
+								    <span class="input-group-text">Observaciones :</span>
+								  </div>
+								  <textarea class="form-control" aria-label="Observaciones"
+								    th:field="*{observaciones}" ></textarea>
+								</div>
+								<hr>
+					<div class="card-footer bg-ligth">
+						<input type="submit" value="Guardar"
+							class="btn btn-outline-primary" title="Guardar"> <a
+							th:href="@{../}" class="btn btn-outline-danger" title="Cancelar">Cancelar</a>
+					</div>
+													
+				</form>
+			
+			</div>
+		</div>
+	</div>
+	<!-- /container --> 
+	</main>
+
+	<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

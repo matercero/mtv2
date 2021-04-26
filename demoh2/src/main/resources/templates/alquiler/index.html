@@ -40,9 +40,15 @@
 					<td th:text="${a.mobiliario.alias}" />
 					<td th:text="${a.precio}" />
 					<td th:text="${a.fechaInicio} + ' - '+ ${a.fechaFin}" />
-					<th:block th:if="${a.contrato != null}? "/>
-						<td th:text="${a.docName}" ><a th:href="@{'/alquiler/downloadFile/'+${a.id}}" ></a></td>
-					</th:block>
+					
+					
+					<td>
+						<div th:if="${a.docName != null} " >	
+							<a th:href="@{'/alquiler/downloadFile/'+ ${a.id}}" target="_blank" >
+								<i class="bi bi-file-earmark-text" title="Contrato"></i>
+							</a>
+						</div>
+					</td>
 					
 					
 				 	<td colspan="2" class="text-right"><a
