@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head" />
 <body>
+
+
 	<div th:replace="fragments :: menu"></div>
 
 
@@ -9,13 +11,10 @@
 
 		<h1>Clientes</h1>
 		
-		<div class="alert alert-info alert-dismissible fade show"
-			role="info" th:if="${message != null}">
-			<h4 th:text="${message}"></h4>	
-			<button type="button" class="close" data-dismiss="alert"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
+	
+		<div class="alert alert-info alert-dismissible fade show" role="info" th:if="${message != null}">
+			  <strong th:text="${message}"></strong> 
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 
 		<a th:href="@{/cliente/crear}"><i class="bi bi-plus-circle btn-small"></i>&nbsp;Nuevo</a>
@@ -28,8 +27,8 @@
 					<th scope="col">DNI</th>
 					<th scope="col" data-field="Nombre" data-sortable="true">Nombre</th>
 					<th scope="col" data-field="Apellidos" data-sortable="true">Apellidos</th>
-					<th scope="col">DirecciÃ³n</th>
-					<th scope="col">TelÃ©fono</th>
+					<th scope="col">Dirección</th>
+					<th scope="col">Teléfono</th>
 					<th scope="col">Municipio</th>
 					<th scope="col">Provincia</th>
 					<th scope="col" width="20%" class="text-center">Acciones</th>
@@ -47,12 +46,12 @@
 					<td th:text="${cli.municipio}" />
 					<td th:text="${cli.provincia}" />
 					<td colspan="2" class="text-center"><a
-						th:href="@{/cliente/editar/{id}   (id=${cli.id}) }"> <i
+						th:href="@{/cliente/editar/{id}   (id=${cli.id}) }" class="btn btn-primary">  <i
 							class="bi bi-pencil" title="Editar"></i>
 					</a> &nbsp;&nbsp; <a
 						th:href="@{/cliente/eliminar/{id}   (id=${cli.id}) }"
 						class="btn btn-danger"
-						onclick="return confirm('Â¿ EstÃ¡s seguro de eliminar ?')"> <i
+						onclick="return confirm('¿ Estás seguro de eliminar ?')"> <i
 							class="bi bi-trash" title="Eliminar"></i></a></td>
 				</tr>
 			</tbody>

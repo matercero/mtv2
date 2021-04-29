@@ -32,8 +32,8 @@
 					<th scope="col">CP</th>					
 					<th scope="col">Cont. Luz</th>
 					<th scope="col">Cont. Agua</th>
-					<th scope="col">Libre</th>
-					<th scope="col" width="20%" class="text-right">Acciones</th>
+				
+					<th scope="col" width="20%" class="text-left">Acciones</th>
 
 				</tr>
 			</thead>
@@ -49,14 +49,16 @@
 					<td th:text="${mo.contadorAgua}" class="text-right"/>
 					
 					
-					<td colspan="2" class="text-right"><a
-						th:href="@{/mobiliario/editar/{id}   (id=${mo.id}) }"> <i
-							class="bi bi-pencil" title="Editar"></i>
-					</a> &nbsp;&nbsp; <a
-						th:href="@{/mobiliario/eliminar/{id}   (id=${mo.id}) }"
-						class="btn btn-danger"
-						onclick="return confirm('� Est�s seguro de eliminar ?')"> <i
-							class="bi bi-trash" title="Eliminar"></i></a></td>
+					<td colspan="2" class="text-right">
+						<a	th:href="@{/mobiliario/editar/{id}   (id=${mo.id}) }" class="btn btn-primary"> 
+							<i	class="bi bi-pencil" title="Editar"></i>
+						</a> 
+						&nbsp;&nbsp; 
+						<a	th:href="@{/mobiliario/eliminar/{id}   (id=${mo.id}) }"	class="btn btn-danger"
+							onclick="return confirm('¿ Estás seguro de eliminar ?')"> 
+							<i	class="bi bi-trash" title="Eliminar"></i>
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

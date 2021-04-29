@@ -3,8 +3,6 @@
 <head th:replace="fragments :: head" />
 <body>
 	<div th:replace="fragments :: menu"></div>
-
-	<main role="main">
 	
 	<div class="container">
 
@@ -16,7 +14,7 @@
 				<form th:action="@{/mobiliario/guardar}" th:object="${mobiliario}"
 					method="post">
 
-					<div class="form-row">					
+						<div class="mb-3">	
 						<input type="hidden" th:field="*{id}"/>								
 						<div class="form-group col-md-6">
 							<input type="text" class="form-control" th:field="*{alias}"
@@ -25,13 +23,13 @@
 					</div>
 					
 				
-					<div class="form-row">
+					<div class="mb-3">	
 						<div class="form-group col-md-12">
 							<input type="text" class="form-control" th:field="*{direccion}"
 								placeholder="Direcci&oacute;n" title="Direcci&oacute;n">
 						</div>
 					</div>
-					<div class="form-row">
+					<div class="input-group mb-3">
 						<div class="form-group col-md-6">
 							<input type="text" class="form-control" th:field="*{municipio}"
 								placeholder="Municipio" title="Municipio">
@@ -43,10 +41,10 @@
 						</div>
 						<div class="form-group col-md-2">
 							<input type="text" class="form-control"
-								th:field="*{codigoPostal}" placeholder="CP" title="*{codigoPostal}">
+								th:field="*{codigoPostal}" placeholder="CP" title="Codigo Postal">
 						</div>
 					</div>
-					<div class="form-row">
+					<div class="input-group mb-3">
 						<div class="form-group col-md-6">
 							<input type="text" class="form-control" th:field="*{contadorLuz}"
 								placeholder="Contador Luz" title="Contador Luz">
@@ -67,8 +65,7 @@
 		</div>
 	</div>
 	<!-- /container --> 
-	</main>
-
+	
 	<div th:replace="fragments :: footer"></div>
 
 </body>

@@ -3,29 +3,26 @@
 <head th:replace="fragments :: head" />
 <body>
 	<div th:replace="fragments :: menu"></div>
-
-
-		<main role="main">
-	
+		
 	<div class="container">
 
 		<div class="card">
-			<h4 class="card-header">Alquiler</h4>
+			<h4 class="card-header" th:text="${messageTitulo}"></h4>
 			
 			<div class="card-body">
 				<form th:action="@{/alquiler/guardar}" th:object="${alquiler}"
 					method="post" encType="multipart/form-data">
 					
-					<input type="hidden" th:field="*{id}"/>							
+					<input type="hidden" th:field="${alquiler.id}"/>							
 					
-					 <div class="form-group">
+						<div class="mb-3">	
 						    <label for="select_cli">Seleccione cliente</label>
 								<select  class="form-control form-group" id="select_cli" th:field="${alquiler.cliente.id}" >
 								  <option th:each="cli : ${listaCliente}"  th:value="${cli.id}"  th:text="'('+${cli.id} + ') ' + ${cli.dni} + ' - ' + ${cli.nombre} + ' ' + ${cli.apellidos}" ></option>
 								</select>						
-					
+					</div>
 						
-						<div class="form-row">
+						<div class="mb-3">	
 							    <label for="select_mobi">Seleccione mobiliario</label>
 							<select  class="form-control form-group" id="select_mobi"  th:field="${alquiler.mobiliario.id}">
 						  		<option th:each="mo : ${listaMobi}"  th:value="${mo.id}"  th:text="${mo.alias}" ></option>
@@ -33,13 +30,13 @@
 						</div>	
 					
 						
-							<div class="form-group row input-group mb-3">
+							<div class=" mb-3">
 								  <span class="input-group-text">Precio  &euro; </span>
 								  <input type="text" class="form-control" th:field="${alquiler.precio}"
 										 title="Precio">
 							</div>
 										
-						<div class="form-group row">
+						<div class="input-group mb-3">
 							  <label for="fecha_inicio" class="col-2 col-form-label">Fecha inicio:</label>
 							  <div class="form-group col-md-4">	
 							    <input id="fecha_inicio" class="form-control" type="date"  th:field="${alquiler.fechaInicio}" >
@@ -50,7 +47,7 @@
 							 </div>
 						</div>
 						
-						<div class="form-row">
+						<div class="input-group mb-3">
 							<label for="luz_inicio" class="col-2 col-form-label">Luz inicio:</label>
 								<div class="form-group col-md-4">							
 									<input type="text" class="form-control" th:field="${alquiler.luzInicio}"
@@ -64,7 +61,7 @@
 								</div>
 						</div>
 						
-						<div class="form-row">
+						<div class="input-group mb-3">
 								<label for="agua_inicio" class="col-2 col-form-label">Agua inicio:</label>
 								<div class="form-group col-md-4">							
 									<input type="text" class="form-control" th:field="${alquiler.aguaInicio}"
@@ -77,30 +74,25 @@
 								</div>
 						</div>
 						
-						<div class="input-group mb-3">
-								  <div class="input-group-prepend">
-								    <span class="input-group-text">Contrato :</span>
-								  </div>
-								  <div class="custom-file">
-								    <input type="file" class="custom-file-input"   name="contrato"  multiple >
-								    <label class="custom-file-label" for="inputGroupFile01">Seleccione documento</label>
-								  </div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">Contrato</label>
+						   <input type="file"class="form-control"  name="contrato" >
 						</div>
 						
 						
 						
-						<div class="input-group">
-								  <div class="input-group-prepend">
+					<div class="mb-3">			
+						  <div class="input-group-prepend">
 								    <span class="input-group-text">Observaciones :</span>
 								  </div>
 								  <textarea class="form-control" aria-label="Observaciones"
 								    th:field="${alquiler.observaciones}" ></textarea>
-								</div>
-								<hr>
+						</div>
+							<hr>
+							
 					<div class="card-footer bg-ligth">
-						<input type="submit" value="Guardar"
-							class="btn btn-outline-primary" title="Guardar"> <a
-							th:href="@{../}" class="btn btn-outline-danger" title="Cancelar">Cancelar</a>
+						<input type="submit" class="btn btn-outline-primary" title="Guardar"  value="Guardar"  >
+						<a id="b_cancelar"	th:href="@{../}" class="btn btn-outline-danger" title="Cancelar"  th:text="Cancelar"></a>
 					</div>
 													
 				</form>
@@ -108,7 +100,6 @@
 		</div>
 	</div>
 	<!-- /container --> 
-	</main>
 
 	<div th:replace="fragments :: footer"></div>
 </body>

@@ -61,7 +61,10 @@ public class Alquiler {
    @Column(name = "contrato")
    private byte[]     contrato;
 
+   @Column(name = "docName", columnDefinition = "Default null")
    private String     docName;
+
+   @Column(name = "docType", columnDefinition = "Default null")
    private String     docType;
 
    public Alquiler() {

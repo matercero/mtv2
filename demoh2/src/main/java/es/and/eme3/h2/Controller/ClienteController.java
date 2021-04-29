@@ -91,6 +91,13 @@ public class ClienteController {
       return raiz + "/lista";
    }
 
+   @RequestMapping(value = "/", method = RequestMethod.GET)
+   public String ini(Model model) {
+      List<Cliente> lista = service.getAll();
+      model.addAttribute("listaCliente", lista);
+      return raiz + "/lista";
+   }
+
    @RequestMapping(value = "/index", method = RequestMethod.GET)
    public String inicioCliente(Model model) {
       List<Cliente> lista = service.getAll();

@@ -10,8 +10,7 @@
 		<h1>Alquiler</h1>
 		
 		<div class="alert alert-info alert-dismissible fade show"
-			role="info" th:if="${message != null}">
-			
+			role="info" th:if="${message != null}">			
 			<h4 th:text="${message}"></h4>	
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
@@ -43,21 +42,21 @@
 					
 					
 					<td>
-						<div th:if="${a.docName != null} " >	
+						<div th:if="${a.docName != ''} " >	
 							<a th:href="@{'/alquiler/downloadFile/'+ ${a.id}}" target="_blank" >
 								<i class="bi bi-file-earmark-text" title="Contrato"></i>
 							</a>
 						</div>
+						<div th:if="${a.docName == ''}">No tiene</div>
 					</td>
 					
-					
 				 	<td colspan="2" class="text-right"><a
-						th:href="@{/alquiler/editar/{id}   (id=${a.id}) }"> 
+						th:href="@{/alquiler/editar/{id}   (id=${a.id}) }"  class="btn btn-primary"> 
 						<i	class="bi bi-pencil" title="Editar"></i>
-					</a> &nbsp;&nbsp; 
-					<a th:href="@{/alquiler/eliminar/{id}   (id=${a.id}) }"	class="btn btn-danger"
-						onclick="return confirm('¿ Estás seguro de eliminar ?')">
-						<i	class="bi bi-trash" title="Eliminar"></i></a>
+						</a> &nbsp;&nbsp; 
+						<a th:href="@{/alquiler/eliminar/{id}   (id=${a.id}) }"	class="btn btn-danger"
+							onclick="return confirm('Â¿ EstÃ¡s seguro de eliminar ?')">
+							<i	class="bi bi-trash" title="Eliminar"></i></a>
 				   </td>
 				
 				 </tr>
