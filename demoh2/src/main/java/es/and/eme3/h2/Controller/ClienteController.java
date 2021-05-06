@@ -10,12 +10,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import es.and.eme3.h2.entity.Cliente;
 import es.and.eme3.h2.service.IClienteService;
@@ -45,12 +47,12 @@ public class ClienteController {
    }
 
    @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.GET)
-   public String eliminar(@PathVariable("id") int idCliente, Model model) {
+   public String eliminar(@PathVariable("id") int idCliente, Model model, RedirectAttributes redirectAttributes) {
       service.deleteById(idCliente);
       List<Cliente> lista = service.getAll();
-      model.addAttribute("message", "Cliente eliminado con éxito !");
+      redirectAttributes.addFlashAttribute("message", "Operación realizada con éxito!");
       model.addAttribute("listaCliente", lista);
-      return raiz + "/lista";
+      return "redirect:/cliente/index";
    }
 
    @GetMapping(value = "/page")
@@ -76,19 +78,20 @@ public class ClienteController {
    }
 
    @PostMapping("/guardar")
-   public String guardar(Cliente cliente, Model model) {
+   public String guardar(Cliente cliente, Model model, BindingResult result, RedirectAttributes redirectAttributes) {
 
       try {
          service.saveAndFlush(cliente);
+         redirectAttributes.addFlashAttribute("message", "Operación realizada con éxito!");
       }
       catch (Exception e) {
          System.out.println(e.getMessage());
+         redirectAttributes.addFlashAttribute("error", "Error: No se ha dado de alta el cliente.");
       }
       List<Cliente> lista = service.getAll();
-      model.addAttribute("message", "Operación realizada con éxito!");
       model.addAttribute("listaCliente", lista);
 
-      return raiz + "/lista";
+      return "redirect:/cliente/index";
    }
 
    @RequestMapping(value = "/", method = RequestMethod.GET)

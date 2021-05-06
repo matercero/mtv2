@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head" />
+<body>
+	<div th:replace="fragments :: menu"></div>
+
+		
+	<div class="container">
+		
+		<form th:action="@{/reciboluz/guardar}" th:object="${reciboluz}"
+					method="post" encType="multipart/form-data">
+					
+					<input type="hidden" th:field="*{id}"/>
+					
+					<div class="mb-3">	
+					   	<h4 class="card-header">Cliente: <strong  th:text="${reciboluz.alquiler.cliente.nombre} +'&nbsp;' + ${reciboluz.alquiler.cliente.apellidos}"></strong></h4>  
+					</div>
+												
+					
+		</form>
+		
+	</div>
+	<!-- /container --> 
+	
+
+	<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>
